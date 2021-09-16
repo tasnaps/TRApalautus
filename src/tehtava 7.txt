@@ -1,0 +1,18 @@
+A= O(2n)
+sisus = O(1)
+
+B= O(n**2)
+ydin = O(1)
+sisälooppi= O(n+j)
+Ulkoloop = O(n-i)
+
+C= O(n-2)
+O(n)
+
+D= O(n**2)
+sisus= O(1)
+sisäloop = O(n+6)
+ulkoloop = O(2n)
+
+E= O(n-sum)
+eli O(n)
