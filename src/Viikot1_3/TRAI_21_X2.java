@@ -1,3 +1,5 @@
+package Viikot1_3;
+
 import java.util.ArrayList;
 
 public interface TRAI_21_X2 {

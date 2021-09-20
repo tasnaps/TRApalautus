@@ -1,4 +1,4 @@
-// TRAI_21_t8_9.java SJ
+package Viikot1_3;// TRAI_21_t8_9.java SJ
 // PÃ¤Ã¤ohjelma viikon 2 tehtÃ¤viin 8 ja 9
 
 import java.util.*;
