@@ -87,6 +87,19 @@ import java.util.Random;
      * @param <E> alkiotyyppi
      */
     static <E extends Comparable<? super E>> void lomitaKasvavat(LinkedList<E> A, LinkedList<E> B) {
+        ListIterator<E> a = A.listIterator();
+        ListIterator<E> b = B.listIterator();
+
+        while(b.hasNext()){
+            while(a.hasNext()){
+                if(b.next().equals(a.next())){
+                    a.add(b.previous());
+                    b.next();
+                }else if(b.previous()!=a.previous()){
+                    a.add(b.next());
+                }
+            }
+        }
 
         // TODO
         // vihje: mieti todella tarkkaan kuvan kanssa miten iteraattoria kÃ¤ytÃ¤t!
