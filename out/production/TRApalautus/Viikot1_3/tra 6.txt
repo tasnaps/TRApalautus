@@ -1,0 +1,22 @@
+Nopeimmasta hitaimpaan:
+
+2021 -> 1
+n/loglog n --> 6
+loglog n ---> 2
+(3/4)**n --->Ei kuulu joukkoon.
+log(2n)--> 3
+n log n --> 8
+sqrt(n)
+sqrt(n, 3) --> 4
+Neliöjuuri(n-log(n))--> 5
+(4/3)**n
+n -> 7
+n**2
+n**2.5
+N**3
+2**n
+n**n
+
+Ei kuulu joukkoon: 2021
+
+

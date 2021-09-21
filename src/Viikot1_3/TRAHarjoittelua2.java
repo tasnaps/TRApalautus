@@ -1,3 +1,5 @@
+package Viikot1_3;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -33,11 +35,6 @@ public class TRAHarjoittelua2 {
         return summa;
     }
 
-     static LinkedList algo(LinkedList LL) {
-        while (LL.size() > 0)
-            LL.remove(0);
-        return LL;
-    }
 
     public static void main(String[] args) {
         LinkedList<Integer> A = new LinkedList<Integer>();
@@ -51,7 +48,6 @@ public class TRAHarjoittelua2 {
         B.add(4);
         int poisto =kasvavienErotus(A,B);
         System.out.println(poisto);
-        System.out.println(algo(A));
 
     }
 }
