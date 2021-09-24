@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="tra2017">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../java library/tra2017.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Kirjasto/tra2017.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../java library/tra2017.jar!/javadoc" />
+      <root url="jar://$PROJECT_DIR$/../Kirjasto/tra2017.jar!/javadoc" />
     </JAVADOC>
     <SOURCES />
   </library>

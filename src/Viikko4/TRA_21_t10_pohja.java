@@ -86,26 +86,42 @@ import java.util.Random;
      * @param B kasvava lista jonka alkiot lisÃ¤tÃ¤Ã¤n
      * @param <E> alkiotyyppi
      */
+
+     /**
+      *
+      * Ei aivan toimi, lista jotenkuten järjestyksessä, ei lisää viimeistä alkiota.
+      */
     static <E extends Comparable<? super E>> void lomitaKasvavat(LinkedList<E> A, LinkedList<E> B) {
         ListIterator<E> a = A.listIterator();
         ListIterator<E> b = B.listIterator();
-
-        while(b.hasNext()){
-            while(a.hasNext()){
-                if(b.next().equals(a.next())){
-                    a.add(b.previous());
-                    b.next();
-                }else if(b.previous()!=a.previous()){
-                    a.add(b.next());
+        //1. A B C D E J K L
+        //2. D E G
+        while (b.hasNext() && a.hasNext()) {
+            E aElement = a.next();
+            E bElement = b.next();
+            if (bElement.compareTo(aElement) <= 0) {
+                System.out.println("bElement.compareTo(aElement) <= 0");
+                a.previous();
+                a.add(bElement);
+                a.next();
+                //Tässä loopissa jotain hauskaa
+            } else if (bElement.compareTo(aElement) > 0) {
+                System.out.println("bElement.compareTo(aElement) >0");
+                while ((bElement.compareTo(aElement) > 0) && (a.hasNext())) {
+                    aElement = a.next();
+                    System.out.println("bElement.compareTo(aElement) >0 && a.hasnext();");
                 }
+                System.out.println("Lisäyskohta");
+                a.previous();
+                a.add(bElement);
+
             }
         }
+        while (!a.hasNext() && b.hasNext()) {
+            System.out.println("!a.hasNext() && b.hasNext()");
+            a.add(b.next());
+            a.previous();
+        }
 
-        // TODO
-        // vihje: mieti todella tarkkaan kuvan kanssa miten iteraattoria kÃ¤ytÃ¤t!
-        // kullakin kierroksella joko kÃ¤sittele yksi toisen listan alkio ja 0 tai useampi toisesta
-        // tai kullakin kierroksella kÃ¤sittele yksi alkio jommastakummasta listasta
     }
-
-
 }

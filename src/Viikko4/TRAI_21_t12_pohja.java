@@ -3,10 +3,8 @@ package Viikko4;
 // TRAI_21_t12.java SJ
 
 /**
- * 12. Palindromi on merkkijono joka myÃ¶s takaperin luettuna on sama. Kun sana talletetaan pakkaan merkki kerrallaan, on
- * helppoa tarkastaa onko sana palindromi vai ei. Kirjoita algoritmi joka tallettaa merkkijonon merkit pakkaan ja joka
- * tarkastaa onko pakan sisÃ¤ltÃ¶ palindromi vai ei. Ota kurssin Moodlesta pÃ¤Ã¤ohjelma jossa on vinkkejÃ¤ miten merkkijono
- * muutetaan pakaksi. Aikavaativuus?
+ * Aikavaativuus?
+ * O(n) lineaarinen algoritmi. Ei ihmeellisempiä kommentteja. Olen tyytyväinen ratkaisuun.
  */
 
 import java.util.ArrayDeque;
@@ -63,11 +61,17 @@ public class TRAI_21_t12_pohja {
      * @param S syÃ¶temerkkijono
      * @return totuusarvo
      */
+
     public static boolean onkoPalindromi(String S) {
         Deque<Character> D = merkkijonostaPakka(S);
-
-        // TODO
-
+        while(!D.isEmpty()){
+            if(D.getFirst().equals(D.getLast())){
+                D.removeFirst();
+                D.removeLast();
+            }else{
+                return false;
+            }
+        }
         return true;
     } // onkoPalindromi()
 

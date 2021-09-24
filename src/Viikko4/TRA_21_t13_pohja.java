@@ -53,17 +53,32 @@ class TRAI_21_t13_pohja {
      * @param T binÃ¤Ã¤ripuu
      * @param x lisÃ¤ttÃ¤vÃ¤ alkio
      * @return tehtiinkÃ¶ lisÃ¤ys vai ei
+     * Toimii 50% ajasta, aika loppuu kesken, mutta palautan kuitenkin. EN ole tyytyväinen.
+     *
+     *
+     *
      */
     public static <E extends Comparable<? super E>>
-    boolean inorderInsert(BTree<E> T, E x) {
-        BTreeNode<E> n = T.getRoot();
+    boolean inorderInsert(BTree<E> T, E z) {
+        BTreeNode<E> y = null;
+        BTreeNode<E> x = T.getRoot();
+        while(x != null){
+            y = x;
+            if(z.compareTo(y.getElement())<0){
+                x = x.getLeftChild();
+            }else {
+                x = x.getRightChild();
+            }
+        }
 
-        // TODO:
-
-        // jos puu on tyhjÃ¤, luo uusi solmu ja aseta se juureksi
-
-        // muuten etsi oikea paikka, luo uusi solmu ja aseta se
-        // oikean solmun lapseksi
+        BTreeNode<E>lisays = new BTreeNode<E>(z);
+        if(y==null){//Tree was empty
+            T.setRoot(lisays);
+        }else if (lisays.getElement().compareTo(y.getElement())<0){
+            y.setLeftChild(lisays);
+        }else {
+            y.setRightChild(lisays);
+        }
 
         return false;
 
@@ -93,6 +108,8 @@ class TRAI_21_t13_pohja {
                 n = n.getRightChild();
         } // while
         return false;
+
+
 
     } // inorderMember()
 
