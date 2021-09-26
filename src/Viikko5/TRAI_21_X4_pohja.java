@@ -55,13 +55,13 @@ public class TRAI_21_X4_pohja implements TRAI_21_X4 {
             return vastaus;
         }
         //nämä else haarat etsii missä kohti haaraudutaan oikealle
-        else if (n.getParent() != null && n.getParent().getRightChild() != null && n.getParent().getRightChild().equals(n)) {
+        else if (n.getParent() != null && n.getParent().getRightChild() != null && n.getParent().getRightChild() ==n) {
             vastaus = n.getParent();
             return vastaus;
         }else{
             while(n.getParent() != null){
                 n = n.getParent();
-                if(n.getParent()!= null && n.getParent().getRightChild()!=null &&n.getParent().getRightChild().equals(n)){
+                if(n.getParent()!= null && n.getParent().getRightChild()!=null &&n.getParent().getRightChild() == n){
                     vastaus = n.getParent();
                     return vastaus;
                 }
