@@ -12,7 +12,11 @@ public class TRAI_21_X4_pohja implements TRAI_21_X4 {
     /**
      * ITSEARVIOINTI TÃ„HÃ„N:
      *  5/5 Hirveästi piti debugata että sain oikean vastauksen.
-     *  Aikavaativuus: O(
+     *  Aikavaativuus: O(n)
+     *
+     *  Mikäli käytetään molempia algoritmeja koko puun läpi käymiseen, on kyseessä vissiin O(2**n)
+     *  -> tower of hanoi tyyppinen algoritmi.
+     *  aina kun n kasvaa yhdellä on max operaatiot tuplana: 2**n -1
      *
      *
      *
