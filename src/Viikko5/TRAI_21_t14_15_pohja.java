@@ -6,7 +6,7 @@ package Viikko5;
 import fi.uef.cs.tra.BTree;
 import fi.uef.cs.tra.BTreeNode;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
@@ -71,6 +71,10 @@ public class TRAI_21_t14_15_pohja {
     /**
      * 14. Kirjoita algoritmi joka etsii binÃ¤Ã¤ripuun matalimman (vÃ¤hiten syvÃ¤n)
      * lehtisolmun. Vihje: tasoittainen lÃ¤pikÃ¤ynti. Aikavaativuus?
+     * Aikavaativuus = O(log n) -> En ole satavarma, mietin että joka kerroksen kohdalla mahdollisuus löytää matalin kohta tuplaantuu.
+     * Tein mielestäni tehokkaan ratkaisun.
+     *
+     *
      * @param T binÃ¤Ã¤ripuu
      * @return matalin lehtisolmu tai null jos puu on tyhjÃ¤
      **/
@@ -79,7 +83,25 @@ public class TRAI_21_t14_15_pohja {
         if (T.getRoot() == null)
             return null;
 
-        // TODO
+        Queue<BTreeNode> jono = new LinkedList<>();
+        BTreeNode node = T.getRoot();
+        //BTreeNode siirto;
+        jono.add(node);
+
+        while(jono.peek() != null){
+            node = jono.poll();
+
+            if(node.getRightChild() == null && node.getLeftChild() == null){
+                return node;
+            }
+
+            if(node.getRightChild() != null){
+                jono.add(node.getRightChild());
+            }
+            if(node.getLeftChild() != null){
+                jono.add(node.getLeftChild());
+            }
+        }
 
         return null;
 
@@ -95,10 +117,37 @@ public class TRAI_21_t14_15_pohja {
      * @param T2 syÃ¶tepuu2
      * @param <E> alkiotyyppi (ei kÃ¤ytetÃ¤)
      * @return ovatko rakenteeltaan samat vai ei
+     *
+     * Aikavaatimus: oliskohan O(2(log n)) en ole täysin varma.
      */
     public static <E> boolean vertaaRakenne(BTree<E> T1, BTree<E> T2) {
 
-        // TODO
+        BTreeNode n1 = T1.getRoot();
+        BTreeNode n2 = T2.getRoot();
+        Queue<BTreeNode> vertailuJ1 = new LinkedList<>();
+        Queue<BTreeNode> vertailuJ2 = new LinkedList<>();
+
+
+        vertailuJ1.add(n1);
+        vertailuJ2.add(n2);
+
+        while(vertailuJ1.peek() != null && vertailuJ2.peek() != null){
+           n1 = vertailuJ1.poll();
+           n2 = vertailuJ2.poll();
+           if(n1.getRightChild() == null && n2.getRightChild() == null &&n1.getLeftChild() == null && n2.getLeftChild() == null){
+               return true;
+           }
+           else if(n1.getLeftChild() != null && n2.getLeftChild() != null){
+               vertailuJ1.add(n1.getLeftChild());
+               vertailuJ2.add(n2.getLeftChild());
+           }
+           else if(n1.getRightChild() != null && n2.getRightChild() != null){
+               vertailuJ1.add(n1.getRightChild());
+               vertailuJ2.add(n2.getRightChild());
+           }else{
+               return false;
+           }
+        }
         return false;
     } // vertaaRakenne()
 

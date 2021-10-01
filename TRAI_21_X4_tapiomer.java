@@ -1,12 +1,6 @@
-package Viikko5;
-
 import fi.uef.cs.tra.BTree;
 import fi.uef.cs.tra.BTreeNode;
-import sun.net.www.content.text.Generic;
-
-import static Viikko5.BinPuuEsim21.exampleBTree;
-
-public class TRAI_21_X4_pohja implements TRAI_21_X4 {
+public class TRAI_21_X4_tapiomer implements TRAI_21_X4 {
 
 
     /**
