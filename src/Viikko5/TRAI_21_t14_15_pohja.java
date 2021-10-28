@@ -118,7 +118,7 @@ public class TRAI_21_t14_15_pohja {
      * @param <E> alkiotyyppi (ei kÃ¤ytetÃ¤)
      * @return ovatko rakenteeltaan samat vai ei
      *
-     * Aikavaatimus: oliskohan O(2(log n)) en ole täysin varma.
+     * Aikavaatimus: oliskohan O(2(log n)) en ole täysin varma. -> Ei vissiin oikein.
      */
     public static <E> boolean vertaaRakenne(BTree<E> T1, BTree<E> T2) {
 
@@ -126,29 +126,33 @@ public class TRAI_21_t14_15_pohja {
         BTreeNode n2 = T2.getRoot();
         Queue<BTreeNode> vertailuJ1 = new LinkedList<>();
         Queue<BTreeNode> vertailuJ2 = new LinkedList<>();
+        boolean lippu = false;
 
 
         vertailuJ1.add(n1);
         vertailuJ2.add(n2);
 
         while(vertailuJ1.peek() != null && vertailuJ2.peek() != null){
+            lippu = false;
            n1 = vertailuJ1.poll();
            n2 = vertailuJ2.poll();
-           if(n1.getRightChild() == null && n2.getRightChild() == null &&n1.getLeftChild() == null && n2.getLeftChild() == null){
-               return true;
-           }
-           else if(n1.getLeftChild() != null && n2.getLeftChild() != null){
+
+            if(n1.getLeftChild() != null && n2.getLeftChild() != null){
                vertailuJ1.add(n1.getLeftChild());
                vertailuJ2.add(n2.getLeftChild());
            }
-           else if(n1.getRightChild() != null && n2.getRightChild() != null){
+            if(n1.getRightChild() == null ||n2.getRightChild() == null){
+                lippu = true;
+            }
+            if(lippu && (n1.getLeftChild() == null || n2.getLeftChild() == null)){
+                return false;
+            }
+            else if(n1.getRightChild() != null && n2.getRightChild() != null){
                vertailuJ1.add(n1.getRightChild());
                vertailuJ2.add(n2.getRightChild());
-           }else{
-               return false;
            }
         }
-        return false;
+        return true;
     } // vertaaRakenne()
 
 
